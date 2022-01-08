@@ -1,5 +1,3 @@
-/* aq vai todos os estilos padrões que vou usar no meu projeto todo */
-/* qualquer navegador traz um css para tudo, é por isso q usamos algumas configs para resetar isso */
 *{
     margin: 0;
     padding: 0;
@@ -20,73 +18,58 @@ html{
     --grey-blue: #A1B2CD;
     --grey-medium: #eaecf2;
     --grey-light: #E5EAF1;
-    
-
-    /* 1rem = 16px (user agent) = 100% (user agent) quando falamos em rem, estamos dizendo que estamos usando a quantidade padrão de pixels de um navegador, por 2rem, é 2x a quantidade de pixels de um navegador, por isso para construir apps responsivos, usamos o rem */
-    /* para descobrirmos quantos rem usar, fazemos a quantidade de pixels q precisamos dividido por 16, ai vai dar exatamente a quantidade de rem */
-    font-size: 62.5%; /* oq estamos falando aq é, ao invés do padrão da página ser 100%, ele vai ser 62,5% que corresponde a 10 px, mas para que fazer isso? é muito mais fácil de calcular o rem agr, vc pega o px q tu quer, e divide por 10, vai dar q quantidade de rem q vc precisa */
+    font-size: 62.5%; 
 }
 
 body{
-    height: 100vh; /* estamos falando q queremos pegar o 100% de view height, ou seja, q ele sempre vai ocupar de onde iniciar a tela, até onde acaba, ou seja? 100 view height, height na vertical*/
-    /* o vw é a mesma logica do outro, onde começa nossa tela até onde terminar, neesse caso estamos falando da largura, width na horizontal */
+    height: 100vh; 
     display: flex;
     background: var(--brackground);
 }
 
-body, button, input, textarea{ /* resetando mais algumas configurações padrões do navegador */
-    /* clamp = intervalo de tamanho */
-    /* n colocamos essa configuração ali em cima no body, pq se n essa config n iria englobar o button input e o textarea */
-    /* o clamp ele fala o seguinte, no menor tamanho eu quero q a font fique 14px, ou seja, eu vou diminuir e diminuir a minha pagina, mas no menor tamanho ele vai ficar 14px, o minimo q a letra vai chegar é 14px, o padrão da letra vai ser 1.6 rem = q é igual a 16px (padrão antigo do navegador, antigo pq a gente mudou o padrão pra 10px), ou seja sempre q ele puder seguir o padrão, estiver deboas ali, ele vai ser 1.6 rem, e se vc abrir muito essa tela, esticar muito, abrir em uma tv por ex, a letra ela vai chegar no máximo a 2 vw, quando abrirmos em uma tv ele vasifazer o calculo do width total da tv e vai fazer o calculo para o nosso tamanho de fonte, ou seja, isso vai ajudar quanto estiver uma tela muito grande, ele vai deixar um tamanho apropriado e proporcional ao tamanho da tela */
+body, button, input, textarea{
     font-size: clamp(14px, 1.6rem, 2vw);
-    /* vamos colocar a font family aq tbm, pra da msm forma englobar o input etc... */
-    /* no proprio site do google ele mostra o código para chamar essas fontes no css */
     font-family: 'Open Sans', sans-serif;
 }
 
-.content{ /* vai ser o nosso conteúdo */
-    width: 100%; /*  width vai ser 100% */
-    margin: 0 auto; /* 0 de margem em cima e embaixo e as amrgens dos lados vão ser automáticos */
+.content{
+    width: 100%; 
+    margin: 0 auto;
 }
 
-.sr-only{ /*  config para esconder aquela label do html */
-    /* display:none não é bom usar essa tag, pq ela n esconde o label, ela literalmente para de existir nem os motores de busca e nem os leitores de tela vão conseguir encontrar esse sronly */
-    position: absolute; /*  essa tag faz com q ela pegue esse elemento e pare de respeitar todos os outros elementos da tela, ele fica por cima de tudo, ai a gente pdoe movimentar esse elemento onde a gente quiser, como se ele n fizesse aprte de uma div, como se ele fosse um elemento unico, em cima de todo mundo */
-    height: 1px; /* altura 1 px */
-    width: 1px; /* largura 1 px, vai deixar a nossa label com exatamente 1px, ocupando 1 px da tela, a gente ainda consegue ver esse texto na terla, pq esse texto ele foge deesse 1px */
+.sr-only{
+    position: absolute;
+    height: 1px; 
+    width: 1px;
     padding: 0;
-    margin: -1px; /* no clip-path a gente deu um posicionamente de 0 em tudo, ou seja, posicionamos ele bem no cantinho, dando 0 de top, left, borrom, e right, e como definimos a margem como -1 px, como nosso conteúdo tem exatamente 1px, ele vai sair da tela e vai ficar escondidinho  */
-    overflow: hidden; /* para n ter barra de rolagem */
+    margin: -1px; 
+    overflow: hidden;
     clip-path: react(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
 }
 
 /* INPUT AND BUTTONS */
-input, button , .button{ /* vamos criar uma classe button no nosso criar sala, para ele pegar os mesmo estilos */
+input, button , .button{
     border-radius: 0.8rem;
     height: 5rem;
 }
 
 button, .button{
     font-family: 'Poppins';
-    font-weight: 500; /* é o peso da fonte, o quanto ela é negrityo, o quando ela é "gordinha" */
-    line-height: 0; /* é como se fosse um taqmanho q acompanha o texto, tipo uma margem,as mas q acompanha o texto, é como se fosse um espaçamento entre as linhas do texto, se eu colocar isso em 0, elas ficarm todas uma em cima da outra, colcoamos isso aq para q ele n tenha um espaçamento dentro do button e acabe desalinahndo as coisas */
-
+    font-weight: 500;
+    line-height: 0; 
     display: flex;
-    align-items: center; /* alinha os itensna vertical */ 
-    justify-content: center; /* alinha horizontalmente para deixar o conteúdo no meio do button */
-
+    align-items: center;  
+    justify-content: center; 
     background: var(--blue);
     color: var(--white);
-
-    transition: filter .2s; /* aq estamos falando para aplicarmos uma transtion no filter de 2s, oq é essa transition? é tipo uma transição para esse brilho q aparece quando paramos com o mouse em cima dos button n ser tão rapido, esse filter fica mais suave */
-
-    cursor: pointer; /* muda o cursos quando passar em cima do button */
+    transition: filter .2s;
+    cursor: pointer; 
 }
 
 button:hover, .button:hover{
-    filter: brightness(1.2); /* aplica um "brilho" nos nossos botões quando passamos o mouse em cima */
+    filter: brightness(1.2);
 }
 
 button > img,
@@ -113,11 +96,9 @@ button.grey,
     background: var(--grey-light);
     font-weight: 500;
     color: var(--grey-dark);
-    /* width: 13.9rem; n trabalhamos com o width dentro do botão, pq se vier um conteúdo escrito maior q o width ele quebra o layout */
 }
 
-/****  HEADER ****/
-
+/*  HEADER */
 .content header{
     width: 80%;
     margin: 3.5rem auto;

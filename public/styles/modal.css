@@ -1,33 +1,28 @@
 .modal-wrapper.active{
     visibility: visible;
     opacity: 1;
-    /* aq estamos fazendo com q a modal fique aparente denovo no nosso layout, então quando a nossa modal mudar para active através do javascript nossa modal, vai pegar essas configurações e vai aparecer */
 }
 
 .modal-wrapper{
-    /* vamos criar uma com com opacidade atraves do rgba, n podemos colcoar a opacidade direto no ccs, por contaq q todo o conteúdo da div vai ficar opaca */
-    position: fixed; /* agr ela esta por cima de todo o nosso conteúdo */
+    position: fixed; 
     width: 100vw;
-    height: 100vh; /* ou seja, ela vai ocupar toda a tela */
+    height: 100vh; 
     top: 0;
-    left: 0; /* nosso conteúdo fica exatamente no cantinho equerdo em cima, se n colocarmos o top  e left, pode correr risco do nosso background sair da tela, para q isso n aconteça a gente coloca um posicionamento  */
+    left: 0; 
     display: flex;
-    background: rgba(4, 9, 17, .8); /* o ultimo parametro é a opacidade, rgb é a cor normal, rgba é a cor com luminosidade/opacidade/transparência */
-    /* para converter uma cor hexadecimal em RBG é so ir no google e achar os conversores, ai para aplicar a opacidade,  */
+    background: rgba(4, 9, 17, .8); 
 
     visibility: hidden;
     opacity: 0;
-    /* colocando essas duas configurações eu consigo esconder a minha modal, as duas propriedades fazem a mesma coisa, pq colocamos os dois? pq se um navegador n aceita um deles, ele pega o outro, é mais como se fosse uma segurança praq se um navegador n aceitar uma propriedade ele vai aceitar a outra */
-    /* pq n usamos o display none? pq essa propriedade faz com q o elemento pare de existir, e a gente n quer isso, queremos q ela simplesmente fique escondida */
 }
 
 .modal-wrapper .modal{
     background: var(--white);
-    width: min(59rem, 90%); /* o min faz com que o nosso layout se torne naturalmente mais responsivo, o min sempre vai pegar oq é menor, apartir do momento q o 90% é o menor, ele pega o 90%, ou seja, quando damo muito zoom no nosso layout, esse conteúdo vai ir crescendo, crescendo e crescendo, ate q o minimo dele passe de 90% da tela, a partir desse momento ele troca o minimo pra 90% */
-    margin: auto; /* aq ele deixou todas as margens automaticas, como o pai da modal tem um display flex, ele já se centralizou certinho, independente do tamanho q a modal ficar ela sempre vai ficar no meio */
+    width: min(59rem, 90%); 
+    margin: auto; 
     border-radius: .8rem;
     font-family: 'Poppins', sans-serif;
-    text-align: center; /* alinha os textos na horizontal no meio */
+    text-align: center;
     padding: 6.4rem;
 }
 
@@ -47,7 +42,7 @@
     margin-bottom: 4rem;
     padding: 1.3rem 1.6rem;
     border: .2rem solid var(--blue);
-    outline: none; /* o outline tira a borda preta em volta do input quando clicamos */
+    outline: none; 
     width: min(70%, 30.2rem);
 }
 

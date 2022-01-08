@@ -1,48 +1,10 @@
-<!-- <!DOCTYPE html>
-    <head>
-        <title>Rocket.Q - Criar Sala</title> -->
-        <!-- <meta charset="UTF-8"> habilitando os caracteres especiais da lingua portuguesa -->
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> tag meta para compatibilidade com o internet explorer  -->
-        <!-- view port -->
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-        <!-- CSS -->
-        <!-- <link rel="stylesheet" href="styles/global.css"> -->
-        <!-- <link rel="stylesheet" href="styles/home.css"> -->
-        <!-- fontes usadas no projeto, é só ir no google fonts achar a fonte q tu quer, e eou tu importa no css ou cria esse link rel no html -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Poppins:wght@500;700&display=swap" rel="stylesheet"> -->
-    <!-- </head> -->
-    <!-- <body> -->
-        <!-- <div id="home" class="content"> -->
-            <!-- <header> -->
-                <!-- <a href="home.html"> -->
-                    <!-- <img src="images/logo-rocketq.svg" alt="Rocket.Q Logo"> -->
-                <!-- </a> -->
-            <!-- </header> -->
-
-            <!-- <div id="bg"> -->
-                <!-- <div class="ball top"></div> -->
-                <!-- <div class="ball bottom"></div> -->
-            <!-- </div> -->
-    
-            <!-- <main> -->
-                <!-- <div class="container">.container cria automaticamente uma div com uam class container, #container cria automaticamente uma div com um id container -->
-                   
-<!-- ***** vamos apagar todo o resto do nosso conteúdo, pq nosso intuito é não repetir código, e os códigos que são identicos nos nossos dois arquivos, a gente deixa em outro arquivo **** -->
-
-<section> <!-- section para guardar o nosso formulario -->
+<section> 
     <h2>Crie Sua própria sala</h2>
-    <form action="/create-room" method="POST"> <!-- esse action precisa ir para uma rota, que vai criar essa sala -->
-        <label class="sr-only" for="room-pass">Insira uma senha</label> <!-- é importante criarmos esse label para os motores de buscas entenderem oq é esse input e tbm por uma questão de acessibilidade, usamos o label justamente para aqueles leitores automáticos saberem oq é esse input, precisamos conectar o label com o input, usando o for, o for faz com que a label pertença ao input conectado nela, através da classe sr-only, no css vamos fazer com q essa label fique escondidinha, ela vai ter o mesmo significado para os motores de busca, porém visualmente, no nosso layout, ela n vai aparecer -->
+    <form action="/create-room" method="POST"> 
+        <label class="sr-only" for="room-pass">Insira uma senha</label>
         <input type="password" name="password" id="room-pass" placeholder="Insira uma senha">
         <button>
             <img src="images/users-white.svg" alt="Entrar na sala"> Criar sala
         </button>
     </form>
 </section>
-                <!-- </div>  -->
-            <!-- </main> -->
-        <!-- </div> -->
-    <!-- </body> -->
-<!-- </html> -->

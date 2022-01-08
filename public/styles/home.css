@@ -1,46 +1,42 @@
-/* aq coloco os estilos q irão na minha home-page */
 .content{
     display: grid;
-    grid-template-columns: 60% 40%; /* aq estamos setando os tamanhaos das colunas que vão fazer parte do nosso grid, nesse caso usamos % para setar o tamanho, mas tbm podemos usar px e tbm fr, entre outros... como por ex 60% 20% 20% se eu quisesse dividir meu layout em 3 áreas*/
-    grid-template-rows: 11.4rem 1fr; /* agr estamos falando das linhas do nosso layout, por ex a logo fica em uma linha, e o resto do nosso conteúdo em outra, usamos esse esquema de fração pois é mais fácil, como n sabemos o tamanho exato da segunda linha até o restante da página, falando q o restante, oq sobrou vai ser dividido em 1fr, ou seja, em 1fr, isso quer dizer q todo o restante da página vai ser dividido em apenas um espaço, se eu colocasse 2fr por ex, ele iria dividir o resteante do meu conteúdo em duas frações de tamanhos iguais */
-
-    grid-template-areas: 'header header' 'left right'; /* esse comando a gente define quem vai ocupar oq no nosso quadrante, por ex, dividimos o nosso conteúdo em 4 quadrantes, um de 60% outro de 40% outro com a linha de 11.4rem e outro com o restante dividido em 1fr */
-    /* primeira linha header, primeira linha da segunda coluna header tbm, dps estou falando q um conteúdo vai ser o da esquerda e outro conteúdo vai ser o da direita, a gente consegue linkar esse grid direto no css */
-    /* estamos falando q na primeira linha primeira coluna vai ser header */
+    grid-template-columns: 60% 40%; 
+    grid-template-rows: 11.4rem 1fr; 
+    grid-template-areas: 'header header' 'left right'; 
 }
 
 header{
-    grid-area: header; /* estamos falando q o header do html vai ocupar a área q chamamos de header no nosso layout grid */
+    grid-area: header; 
 }
 
 #bg{
-    grid-area: left; /* mesmo esquema, estou falando q o meu conteúdo de bg, vai ocupar a área denominada com left no nosso grid*/
-    background: url(/images/home-bg-img.svg) no-repeat top/contain; /* top contain, estamos falando para o bg ficar no top, e todo o conteúdo dela, se encaixar dentro do espaço da div, para ela ficar contida nesse espaço, se eu tentar colcoar por exemplo cover, ele vai tentar preencher todo o espaço da div, independente se corta a img ou n, contain coloca a img por completo dentro do espaço da div */
-    background-position-x: -5rem; /* é uma tag q faz com q a gente posicione o nosso background dentro da nossa div, quando damos por exempo, um margin-left: -10rem a gente ta pegando a div toda e jogando pro lado, saindo da tela, já com essa tag a gente faz com que só o nosso background da nossa div saia da tela, se mova digamos assim, a imagem em si n está saindo da tela, ai n gera overflow (barra de rolagem), temos o x e o y na tag, q faz com q ele se mova para a horizontal ou vertical */
+    grid-area: left; 
+    background: url(/images/home-bg-img.svg) no-repeat top/contain; 
+    background-position-x: -5rem; 
 }
 
 main{
-    grid-area: right; /* linkando o conteúdo do nosso main com a area da grid right */
+    grid-area: right; 
     display: flex;
-    align-items: center; /* sempre q usarmos o display flex, coloca o align items para deixar todo o nosso conteúdo já alinhado no centro */
+    align-items: center; 
     margin-top: -12rem;
 }
 
 main .container{
-    width: min(36.3rem, 100%); /* a função min, a gente consegue passar um valor minimo, ela diz q o elemento pode ter 100% de largura, porém ele sempre vai dar preferencia para o min, então se em algum momento o 100% for menor, ele vai pegar o 100%, graças a isso a gente sempre vai ter certeza q se esse elemento dependendo do tamanho da tela, ele não vá quebrar, nunca vai fugir da tela, é uma segurança a mais q a gente dá para o nosso layout */
+    width: min(36.3rem, 100%); 
 }
 
 main h2{
     font-family: 'Poppins', sans-serif;
     color: var(--black);
-    font-size: clamp(20px, 5vw, 2.8rem); /* 20px minimo, 5vw padrão, 2.8rem máximo */
+    font-size: clamp(20px, 5vw, 2.8rem); 
     font-weight: 700;
     margin-bottom: 2.4rem;
 }
 
 input{
     border: 0.2rem solid var(--grey-blue);
-    padding: 0 1.6rem; /* n colcoamos padding em cima  eembaixo pq vamos usar o height para deixar no tamanho certinho */
+    padding: 0 1.6rem;
     outline: none;
 }
 
@@ -49,8 +45,7 @@ input, button, .button{
     margin-bottom: 1.8rem;
 }
 
-/* Separator line */
-
+/* SEPARATOR LINE */
 .separator{
     display: flex;
     align-items: center;
@@ -66,21 +61,18 @@ input, button, .button{
 }
 
 .separator div:nth-child(1),
-.separator div:nth-child(3){ /* estamos falando q queremos pegar, dentro da classe separator, o filho 1 e o filho 3 da div */
+.separator div:nth-child(3){
     background: var(--grey-blue);
     width: 100%;
     height: 1px;
 }
 
-/* clippy site para pegar formas css */
-
-/* create balls */
-
+/* CREATE BALLS */
 .ball{
     width: 21.2rem;
     height: 21.2rem;
     background: var(--blue);
-    position: fixed; /* fica na frente e por cima de tudo */
+    position: fixed; 
     clip-path: circle();
     opacity: 0.1;
 }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
     <head>
         <title>Rocket.Q - Perguntas e respostas</title>
-        <meta charset="UTF-8"> <!-- habilitando os caracteres especiais da lingua portuguesa -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- tag meta para compatibilidade com o internet explorer --> 
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  
         <!-- view port -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="/styles/room.css">
         <link rel="stylesheet" href="/styles/modal.css">
         <!-- SCRIPT -->
-        <script src="/scripts/main.js" defer type="module"></script> <!-- estamos falando q esse meu script q ele ta carregando é um módulo -->
-        <!-- fontes usadas no projeto, é só ir no google fonts achar a fonte q tu quer, e eou tu importa no css ou cria esse link rel no html -->
+        <script src="/scripts/main.js" defer type="module"></script>
+        <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
@@ -23,7 +23,6 @@
                     <img src="/images/logo-rocketq.svg" alt="Rocket.Q Logo">
                     <div class="buttons">
                         <div class="button outlined" id="room-id" data-id="<%= roomId %>">
-                            <!-- data set, usamos isso no js para pegarmos alguns dados do html de forma fácil, ai a gente consegue pegar esse room id e esse data id lá no js -->
                             #<%= roomId %> 
                             <img src="/images/copy.svg" alt="Copiar número da sala">
                         </div>
@@ -39,8 +38,7 @@
             <main>
                 <section id="question-form">
                     <h2>Faça sua pergunta</h2>
-                    <!-- textarea tenq ficar dentro de um form-->
-                    <form action="/question/create/<%= roomId %>" method="POST"> <!-- colocar o método POST pra gente n ficar pegando isso pela url, pra gente pegar isso aq pelo controller -->
+                    <form action="/question/create/<%= roomId %>" method="POST">
                         <label class="sr-only" for-id="question" >O que você quer perguntar?</label>
                         <textarea name="question" id="question" placeholder="O que você quer perguntar?"></textarea>
                         <footer>
@@ -54,29 +52,22 @@
                 </section>
                 <section id="questions">
                     <h2 class="sr-only">Perguntas da comunidade</h2>
-                    <!-- por enquanto vamos colocar o id emc ada pergunta manualmente, mais pra frente no código vamos setar esses ids de forma dinamica -->
-                    <div class="questions"> <!-- é todas as questões, a div q engloba todas as questões-->
-                        <!-- se o isNoQuestions(tem questão ou n) for verdadeiro, vamos incluir o arquivo no question -->
+                    <div class="questions">
                         <% if(isNoQuestions) { %>
                             <%- include('parts/no-question') %>
                         <% } %>
 
-
-
-                        <!-- for each pra gente colocar as perguntas que estão no nosso banco de dados no layuout -->
-                        <!-- dentro do foreach vamos colcocar tudo q a gente quer que aconteça com as questões -->
                         <% questions.forEach(question => { %>
-
-                            <div class="question-wrapper"> <!-- quadrado inteiro de uma questão -->
-                                <div class="questions-content"> <!-- onde estara escrito a pergunta, conteudo da questão -->
-                                    <div class="user"> <!-- avatar -->
+                            <div class="question-wrapper"> 
+                                <div class="questions-content"> 
+                                    <div class="user"> 
                                         <img src="/images/user.svg" alt="Avatar">
                                     </div>
-                                    <div class="question"> <!-- pergunta em si -->
+                                    <div class="question"> 
                                         <p><%= question.title  %></p>
                                     </div> 
                                 </div>
-                                <div class="actions"> <!-- somente os botões de ação -->
+                                <div class="actions"> 
                                     <a href="#" class="check" data-id="<%= question.id  %>">
                                         <img src="/images/check.svg" alt="Marcar como lida">
                                         Marcar como lida
@@ -87,44 +78,36 @@
                                     </a>
                                 </div>
                             </div>
-
                         <% }); %>
-                        <!-- quando queremos usar ejs no html usamos menor porcentagem, nesse exmplo aq, as duas linhas só que são ejs, o resto é html, por isso podemos escrever código html no meio desse ejs sem problemas, por isso vamos colocar nossa div question-wrapper aq dentro, pra ele fazer isso, varias e varias vezes até o foreach percorrer todo o array -->
 
-                        <!-- agr vamos fazer o for each somente para nossas perguntas já lidas -->
                         <% questionsRead.forEach(questionRead => { %>
-
-                            <div class="question-wrapper read"> <!-- quadrado inteiro de uma questão -->
-                                <div class="questions-content"> <!-- onde estara escrito a pergunta, conteudo da questão -->
-                                    <div class="user"> <!-- avatar -->
+                            <div class="question-wrapper read"> 
+                                <div class="questions-content"> 
+                                    <div class="user"> 
                                         <img src="/images/user.svg" alt="Avatar">
                                     </div>
-                                    <div class="question"> <!-- pergunta em si -->
+                                    <div class="question"> 
                                         <p><%= questionRead.title %></p>
                                     </div> 
                                 </div>
-                                <div class="actions"> <!-- somente os botões de ação -->
-                                    <a href="#" class="delete">
+                                <div class="actions"> 
+                                    <a href="#" class="delete" data-id="<%= questionRead.id  %>">
                                         <img src="/images/trash.svg" alt="Excluir" data-id="<%= questionRead.id %>">
                                         Excluir
                                     </a>
                                 </div>
                             </div>
-
                         <% }); %>
-
                     </div>
                 </section>
             </main>
         </div>
 
-        <!--------- MODAL  ----------->
-        <div class="modal-wrapper"> <!-- em algum momento vamos ativar a nodda modal pelo javascript, então vamos colca a classe active nela e quando essa classe active axeistir a gente quer mostrar a nossa modal -->
+        <!-- MODAL -->
+        <div class="modal-wrapper">
             <div class="modal">
                 <h2>Excluir pergunta</h2>
                 <p>Tem certeza que você deseja excluir esta pergunta?</p>
-
-                <!-- preparando o formulário para passar pro controller, colocamos o method e a action -->
                 <form action="#" method="POST">
                     <label class="sr-only" for-id="password">Digite sua senha admin</label>
                     <input type="password" id="password" name="password" placeholder="Digite sua senha">
