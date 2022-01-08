@@ -1,0 +1,23 @@
+<section> <!-- section para guardar o nosso formulario -->
+    <h2>Entre como participante</h2>
+    <form action="/enterroom" method="POST">
+        <label class="sr-only" for="room-id">Código da sala</label> <!-- é importante criarmos esse label para os motores de buscas entenderem oq é esse input e tbm por uma questão de acessibilidade, usamos o label justamente para aqueles leitores automáticos saberem oq é esse input, precisamos conectar o label com o input, usando o for, o for faz com que a label pertença ao input conectado nela, através da classe sr-only, no css vamos fazer com q essa label fique escondidinha, ela vai ter o mesmo significado para os motores de busca, porém visualmente, no nosso layout, ela n vai aparecer -->
+        <input type="number" name="roomId" id="room-id" placeholder="Código da sala">
+        <button>
+            <img src="images/icon-login.svg" alt="Entrar na sala"> Entrar na sala
+        </button>
+    </form>
+</section>
+
+<div class="separator">
+    <div></div>
+    <div>ou</div>
+    <div></div>
+</div>
+
+<section>
+    <h2>Crie sua própria sala, de forma fácil</h2>
+    <a href="/create-pass" class="button outlined">
+        <img src="images/icon-users.svg" alt="Criar Sala"> Criar Sala
+    </a> <!-- ao invés de fazer um button, vamos fazer uma tag a com o conteúdo, como se fosse um button -->
+</section>
